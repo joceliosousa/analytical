@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/y_query_flight_alp_cds/$metadata">
+        <edmx:Include Namespace="Y_QUERY_FLIGHT_ALP_CDS"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="005056b095991edc82eb51330491df9d.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="Y_QUERY_FLIGHT_ALP_CDS.Y_QUERY_FLIGHT_ALPType">
+                <Annotation Term="UI.DataPoint" Qualifier="E_1630524036715">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Title" String="Embedded-Analytical List Page"/>
+                        <PropertyValue Property="Value" Path="TotalOfBookings"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record>
+                                <PropertyValue Property="ScaleFactor" String=""/>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="0"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Minimize"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="E_1630524036715">
+                    <Record>
+                        <PropertyValue Property="ID" String="E.1630524036715"/>
+                        <PropertyValue Property="Text" String="Relatório"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields" Qualifier="E_1630524036715">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="E_1630524036715">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="E_1630524036715_V_1630524633111">
+                    <Record>
+                        <PropertyValue Property="ID" String="V.1630524633111"/>
+                        <PropertyValue Property="Text" String="Reservas"/>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#E_1630524036715_V_1630524633111</AnnotationPath>
+                                <AnnotationPath>@UI.DataPoint#E_1630524036715</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SortOrder" Path="@Common.SortOrder#E_1630524036715_V_1630524633111"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="E_1630524036715_V_1630524633111">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="Reservas"/>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="TotalOfBookings"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>TotalOfBookings</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="CustomerCountry"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>CustomerCountry</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.SortOrder" Qualifier="E_1630524036715_V_1630524633111">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Property" PropertyPath="TotalOfBookings"/>
+                            <PropertyValue Property="Descending" Bool="true"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="E_1630524036715_V_1630524768107">
+                    <Record>
+                        <PropertyValue Property="ID" String="V.1630524768107"/>
+                        <PropertyValue Property="Text" String="Bagagem"/>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#E_1630524036715_V_1630524768107</AnnotationPath>
+                                <AnnotationPath>@UI.DataPoint#E_1630524036715</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SortOrder" Path="@Common.SortOrder#E_1630524036715_V_1630524768107"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="E_1630524036715_V_1630524768107">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="Bagagem"/>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="WeightOfLuggage"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>WeightOfLuggage</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="Airline"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>Airline</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Line"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.SortOrder" Qualifier="E_1630524036715_V_1630524768107">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Property" PropertyPath="WeightOfLuggage"/>
+                            <PropertyValue Property="Descending" Bool="true"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="E_1630524036715_V_1630524850764">
+                    <Record>
+                        <PropertyValue Property="ID" String="V.1630524850764"/>
+                        <PropertyValue Property="Text" String="Tabela"/>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.LineItem#E_1630524036715_V_1630524850764</AnnotationPath>
+                                <AnnotationPath>@UI.DataPoint#E_1630524036715</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SortOrder" Path="@Common.SortOrder#E_1630524036715_V_1630524850764"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="E_1630524036715_V_1630524850764">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="TotalOfBookings"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Airline"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerCountry"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CalendarYear"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Common.SortOrder" Qualifier="E_1630524036715_V_1630524850764">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Property" PropertyPath="TotalOfBookings"/>
+                            <PropertyValue Property="Descending" Bool="true"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.KPI" Qualifier="E_1630524036715">
+                    <Record>
+                        <PropertyValue Property="ID" String="E.1630524036715"/>
+                        <PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#E_1630524036715"/>
+                        <PropertyValue Property="DataPoint" Path="@UI.DataPoint#E_1630524036715"/>
+                        <PropertyValue Property="Detail">
+                            <Record Type="UI.KPIDetailType">
+                                <PropertyValue Property="DefaultPresentationVariant" Path="@UI.PresentationVariant#E_1630524036715_V_1630524633111"/>
+                                <PropertyValue Property="AlternativePresentationVariants">
+                                    <Collection>
+                                        <Path>@UI.PresentationVariant#E_1630524036715_V_1630524768107</Path>
+                                        <Path>@UI.PresentationVariant#E_1630524036715_V_1630524850764</Path>
+                                    </Collection>
+                                </PropertyValue>
+                                <PropertyValue Property="SemanticObject" String="poc_analytic_qc"/>
+                                <PropertyValue Property="Action" String="display"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="Y_QUERY_FLIGHT_ALP_CDS.CalendarMonth"/>
+            <Annotations Target="Y_QUERY_FLIGHT_ALP_CDS.CalendarMonthResult"/>
+            <Annotations Target="Y_QUERY_FLIGHT_ALP_CDS.CalendarYear"/>
+            <Annotations Target="Y_QUERY_FLIGHT_ALP_CDS.CalendarYearResult"/>
+            <Annotations Target="Y_QUERY_FLIGHT_ALP_CDS.CustomerCountry"/>
+            <Annotations Target="Y_QUERY_FLIGHT_ALP_CDS.CustomerCountryResult"/>
+            <Annotations Target="Y_QUERY_FLIGHT_ALP_CDS.WeightUOM"/>
+            <Annotations Target="Y_QUERY_FLIGHT_ALP_CDS.WeightUOMResult"/>
+            <Annotations Target="Y_QUERY_FLIGHT_ALP_CDS.Airline"/>
+            <Annotations Target="Y_QUERY_FLIGHT_ALP_CDS.AirlineResult"/>
+            <Annotations Target="Y_QUERY_FLIGHT_ALP_CDS.ODataQueryAdditionalMetadata"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
