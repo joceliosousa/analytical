@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_api_batch_srv" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="BatchType" sap:label="Lotes" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="BatchIdentifyingPlant"/>
+                    <PropertyRef Name="Batch"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Nº do material"/>
+                <Property Name="BatchIdentifyingPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Lote" sap:quickinfo="Número do lote"/>
+                <Property Name="BatchIsMarkedForDeletion" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Marc.p/elim.lote" sap:quickinfo="Marcação para eliminar todos os dados de um lote"/>
+                <Property Name="MatlBatchIsInRstrcdUseStock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Lote não livre" sap:quickinfo="Lote no estoque com utilização restrita"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Fornecedor" sap:quickinfo="Nº conta do fornecedor"/>
+                <Property Name="BatchBySupplier" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Lote do fornecedor" sap:quickinfo="Nº do lote fornecedor"/>
+                <Property Name="CountryOfOrigin" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="País de origem" sap:quickinfo="País de origem do material (origem CCI)"/>
+                <Property Name="RegionOfOrigin" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Região de origem" sap:quickinfo="Região de origem do material (origem Câm.Ind.e Comércio)"/>
+                <Property Name="MatlBatchAvailabilityDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Disponível desde" sap:quickinfo="Data de disponibilidade"/>
+                <Property Name="ShelfLifeExpirationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data do vencimento"/>
+                <Property Name="ManufactureDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data de produção"/>
+                <Property Name="FreeDefinedDate1" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data p/utilz.livre 1" sap:quickinfo="Data para utilização livre 1"/>
+                <Property Name="FreeDefinedDate2" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data p/utilz.livre 2" sap:quickinfo="Data para utilização livre 2"/>
+                <Property Name="FreeDefinedDate3" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data p/utilz.livre 3" sap:quickinfo="Data para utilização livre 3"/>
+                <Property Name="FreeDefinedDate4" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data p/utilz.livre 4" sap:quickinfo="Data para utilização livre 4"/>
+                <Property Name="FreeDefinedDate5" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data p/utilz.livre 5" sap:quickinfo="Data para utilização livre 5"/>
+                <Property Name="FreeDefinedDate6" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data p/utilz.livre 6" sap:quickinfo="Data para utilização livre 6"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Criado em" sap:quickinfo="Criado em registro da hora" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Última modificação" sap:quickinfo="Registro da hora da última modificação" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="BatchExtWhseMgmtInternalId" Type="Edm.Guid" sap:label="ID do lote" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_BatchCharc" Relationship="cds_api_batch_srv.assoc_60ABC63B5847FBB947A5E66206309374" FromRole="FromRole_assoc_60ABC63B5847FBB947A5E66206309374" ToRole="ToRole_assoc_60ABC63B5847FBB947A5E66206309374"/>
+                <NavigationProperty Name="to_BatchClass" Relationship="cds_api_batch_srv.assoc_F157C1BF1BB8332EF3EDE600265FEEC4" FromRole="FromRole_assoc_F157C1BF1BB8332EF3EDE600265FEEC4" ToRole="ToRole_assoc_F157C1BF1BB8332EF3EDE600265FEEC4"/>
+                <NavigationProperty Name="to_BatchPlant" Relationship="cds_api_batch_srv.assoc_50E0FB99EF508B61011201AAEB1E15C7" FromRole="FromRole_assoc_50E0FB99EF508B61011201AAEB1E15C7" ToRole="ToRole_assoc_50E0FB99EF508B61011201AAEB1E15C7"/>
+            </EntityType>
+            <EntityType Name="BatchCharcType" sap:label="Características de lote" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="BatchIdentifyingPlant"/>
+                    <PropertyRef Name="Batch"/>
+                    <PropertyRef Name="CharcInternalID"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Nº do material"/>
+                <Property Name="BatchIdentifyingPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Lote" sap:quickinfo="Número do lote"/>
+                <Property Name="CharcInternalID" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="ID interno de característica"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Última modificação" sap:quickinfo="Registro da hora da última modificação"/>
+                <NavigationProperty Name="to_Batch" Relationship="cds_api_batch_srv.assoc_EB4BB776AFF36BBF6F9CB98188C729EB" FromRole="FromRole_assoc_EB4BB776AFF36BBF6F9CB98188C729EB" ToRole="ToRole_assoc_EB4BB776AFF36BBF6F9CB98188C729EB"/>
+                <NavigationProperty Name="to_BatchCharcValue" Relationship="cds_api_batch_srv.assoc_4B366B354633A0A31385A5EB9C273E6F" FromRole="FromRole_assoc_4B366B354633A0A31385A5EB9C273E6F" ToRole="ToRole_assoc_4B366B354633A0A31385A5EB9C273E6F"/>
+            </EntityType>
+            <EntityType Name="BatchCharcValueType" sap:label="Avaliação de característica do lote" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="BatchIdentifyingPlant"/>
+                    <PropertyRef Name="Batch"/>
+                    <PropertyRef Name="CharcInternalID"/>
+                    <PropertyRef Name="CharcValuePositionNumber"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Nº do material"/>
+                <Property Name="BatchIdentifyingPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Lote" sap:quickinfo="Número do lote"/>
+                <Property Name="CharcInternalID" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="ID interno de característica"/>
+                <Property Name="CharcValuePositionNumber" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="NonNegative" sap:label="Contador" sap:quickinfo="Numerador valor da característica" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CharcValueDependency" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Código" sap:quickinfo="Code para dependência de valores"/>
+                <Property Name="CharcValue" Type="Edm.String" MaxLength="70" sap:label="Val.caract." sap:quickinfo="Valor da característica"/>
+                <Property Name="CharcFromNumericValue" Type="Edm.Double" sap:label="Valor de" sap:quickinfo="Valor interno vírgula flutuante desde"/>
+                <Property Name="CharcFromNumericValueUnit" Type="Edm.String" MaxLength="3" sap:label="Unid.medida interna" sap:quickinfo="Unidade de medida" sap:semantics="unit-of-measure"/>
+                <Property Name="CharcToNumericValue" Type="Edm.Double" sap:label="Valor até" sap:quickinfo="Valor interno vírgula flutuante até"/>
+                <Property Name="CharcToNumericValueUnit" Type="Edm.String" MaxLength="3" sap:label="Unid.medida interna" sap:quickinfo="Unidade de medida" sap:semantics="unit-of-measure"/>
+                <Property Name="CharcFromDecimalValue" Type="Edm.Decimal" Precision="31" Scale="14" sap:label="Lim.inf.cpo.numérico" sap:quickinfo="Limite inferior para campo numérico"/>
+                <Property Name="CharcToDecimalValue" Type="Edm.Decimal" Precision="31" Scale="14" sap:label="Lim.sup.cpo.numérico" sap:quickinfo="Limite superior para campo numérico"/>
+                <Property Name="CharcFromAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:unit="Currency" sap:label="Lim.inferior moeda" sap:quickinfo="Limite inferior para campo de moeda"/>
+                <Property Name="CharcToAmount" Type="Edm.Decimal" Precision="24" Scale="3" sap:unit="Currency" sap:label="Lim.superior moeda" sap:quickinfo="Limite superior para campo de moeda"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Moeda" sap:quickinfo="Código da moeda" sap:semantics="currency-code"/>
+                <Property Name="CharcFromDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Lim.inf.interv.datas" sap:quickinfo="Limite inferior para intervalo de datas"/>
+                <Property Name="CharcToDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Lim.sup.interv.datas" sap:quickinfo="Limite superior para intervalo de datas"/>
+                <Property Name="CharcFromTime" Type="Edm.Time" Precision="0" sap:label="Lim.inferior tempo" sap:quickinfo="Limite inferior para intervalo de tempo"/>
+                <Property Name="CharcToTime" Type="Edm.Time" Precision="0" sap:label="Lim.superior tempo" sap:quickinfo="Limite superior para intervalo de tempo"/>
+                <Property Name="CharacteristicAuthor" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Autor" sap:quickinfo="Classificação: autor" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Última modificação" sap:quickinfo="Registro da hora da última modificação" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_BatchCharc" Relationship="cds_api_batch_srv.assoc_6E213856701116CD7E1E7CC59103B8D5" FromRole="FromRole_assoc_6E213856701116CD7E1E7CC59103B8D5" ToRole="ToRole_assoc_6E213856701116CD7E1E7CC59103B8D5"/>
+            </EntityType>
+            <EntityType Name="BatchClassType" sap:label="Atribuições classe do lote" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="BatchIdentifyingPlant"/>
+                    <PropertyRef Name="Batch"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Nº do material"/>
+                <Property Name="BatchIdentifyingPlant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Lote" sap:quickinfo="Número do lote"/>
+                <Property Name="ClassInternalID" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Nº classe interno"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Última modificação" sap:quickinfo="Registro da hora da última modificação" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Batch" Relationship="cds_api_batch_srv.assoc_EB7E7CE59B7AFAD25AC9F6525F8CD418" FromRole="FromRole_assoc_EB7E7CE59B7AFAD25AC9F6525F8CD418" ToRole="ToRole_assoc_EB7E7CE59B7AFAD25AC9F6525F8CD418"/>
+            </EntityType>
+            <EntityType Name="BatchPlantType" sap:label="Informação de lote específico de centro" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Batch"/>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Nº do material"/>
+                <Property Name="Batch" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Lote" sap:quickinfo="Número do lote"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro"/>
+                <Property Name="BatchIdentifyingPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="InventoryValuationType" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Tipo de avaliação"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Última modificação" sap:quickinfo="Registro da hora da última modificação" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Batch" Relationship="cds_api_batch_srv.assoc_48D76C27EA225BB59F7E80B6C0B57CD2" FromRole="FromRole_assoc_48D76C27EA225BB59F7E80B6C0B57CD2" ToRole="ToRole_assoc_48D76C27EA225BB59F7E80B6C0B57CD2"/>
+            </EntityType>
+            <Association Name="assoc_F157C1BF1BB8332EF3EDE600265FEEC4" sap:content-version="1">
+                <End Type="cds_api_batch_srv.BatchType" Multiplicity="1" Role="FromRole_assoc_F157C1BF1BB8332EF3EDE600265FEEC4">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_api_batch_srv.BatchClassType" Multiplicity="0..1" Role="ToRole_assoc_F157C1BF1BB8332EF3EDE600265FEEC4"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_F157C1BF1BB8332EF3EDE600265FEEC4">
+                        <PropertyRef Name="Batch"/>
+                        <PropertyRef Name="BatchIdentifyingPlant"/>
+                        <PropertyRef Name="Material"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_F157C1BF1BB8332EF3EDE600265FEEC4">
+                        <PropertyRef Name="Batch"/>
+                        <PropertyRef Name="BatchIdentifyingPlant"/>
+                        <PropertyRef Name="Material"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_50E0FB99EF508B61011201AAEB1E15C7" sap:content-version="1">
+                <End Type="cds_api_batch_srv.BatchType" Multiplicity="1" Role="FromRole_assoc_50E0FB99EF508B61011201AAEB1E15C7">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_api_batch_srv.BatchPlantType" Multiplicity="*" Role="ToRole_assoc_50E0FB99EF508B61011201AAEB1E15C7"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_50E0FB99EF508B61011201AAEB1E15C7">
+                        <PropertyRef Name="Batch"/>
+                        <PropertyRef Name="BatchIdentifyingPlant"/>
+                        <PropertyRef Name="Material"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_50E0FB99EF508B61011201AAEB1E15C7">
+                        <PropertyRef Name="Batch"/>
+                        <PropertyRef Name="BatchIdentifyingPlant"/>
+                        <PropertyRef Name="Material"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_60ABC63B5847FBB947A5E66206309374" sap:content-version="1">
+                <End Type="cds_api_batch_srv.BatchType" Multiplicity="1" Role="FromRole_assoc_60ABC63B5847FBB947A5E66206309374">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_api_batch_srv.BatchCharcType" Multiplicity="*" Role="ToRole_assoc_60ABC63B5847FBB947A5E66206309374"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_60ABC63B5847FBB947A5E66206309374">
+                        <PropertyRef Name="Batch"/>
+                        <PropertyRef Name="BatchIdentifyingPlant"/>
+                        <PropertyRef Name="Material"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_60ABC63B5847FBB947A5E66206309374">
+                        <PropertyRef Name="Batch"/>
+                        <PropertyRef Name="BatchIdentifyingPlant"/>
+                        <PropertyRef Name="Material"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_48D76C27EA225BB59F7E80B6C0B57CD2" sap:content-version="1">
+                <End Type="cds_api_batch_srv.BatchPlantType" Multiplicity="1" Role="FromRole_assoc_48D76C27EA225BB59F7E80B6C0B57CD2"/>
+                <End Type="cds_api_batch_srv.BatchType" Multiplicity="1" Role="ToRole_assoc_48D76C27EA225BB59F7E80B6C0B57CD2"/>
+            </Association>
+            <Association Name="assoc_EB7E7CE59B7AFAD25AC9F6525F8CD418" sap:content-version="1">
+                <End Type="cds_api_batch_srv.BatchClassType" Multiplicity="1" Role="FromRole_assoc_EB7E7CE59B7AFAD25AC9F6525F8CD418"/>
+                <End Type="cds_api_batch_srv.BatchType" Multiplicity="1" Role="ToRole_assoc_EB7E7CE59B7AFAD25AC9F6525F8CD418"/>
+            </Association>
+            <Association Name="assoc_EB4BB776AFF36BBF6F9CB98188C729EB" sap:content-version="1">
+                <End Type="cds_api_batch_srv.BatchCharcType" Multiplicity="1" Role="FromRole_assoc_EB4BB776AFF36BBF6F9CB98188C729EB"/>
+                <End Type="cds_api_batch_srv.BatchType" Multiplicity="1" Role="ToRole_assoc_EB4BB776AFF36BBF6F9CB98188C729EB"/>
+            </Association>
+            <Association Name="assoc_4B366B354633A0A31385A5EB9C273E6F" sap:content-version="1">
+                <End Type="cds_api_batch_srv.BatchCharcType" Multiplicity="1" Role="FromRole_assoc_4B366B354633A0A31385A5EB9C273E6F">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_api_batch_srv.BatchCharcValueType" Multiplicity="*" Role="ToRole_assoc_4B366B354633A0A31385A5EB9C273E6F"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_4B366B354633A0A31385A5EB9C273E6F">
+                        <PropertyRef Name="CharcInternalID"/>
+                        <PropertyRef Name="Batch"/>
+                        <PropertyRef Name="BatchIdentifyingPlant"/>
+                        <PropertyRef Name="Material"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_4B366B354633A0A31385A5EB9C273E6F">
+                        <PropertyRef Name="CharcInternalID"/>
+                        <PropertyRef Name="Batch"/>
+                        <PropertyRef Name="BatchIdentifyingPlant"/>
+                        <PropertyRef Name="Material"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_6E213856701116CD7E1E7CC59103B8D5" sap:content-version="1">
+                <End Type="cds_api_batch_srv.BatchCharcValueType" Multiplicity="1" Role="FromRole_assoc_6E213856701116CD7E1E7CC59103B8D5"/>
+                <End Type="cds_api_batch_srv.BatchCharcType" Multiplicity="1" Role="ToRole_assoc_6E213856701116CD7E1E7CC59103B8D5"/>
+            </Association>
+            <EntityContainer Name="cds_api_batch_srv_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Batch" EntityType="cds_api_batch_srv.BatchType" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="BatchCharc" EntityType="cds_api_batch_srv.BatchCharcType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="BatchCharcValue" EntityType="cds_api_batch_srv.BatchCharcValueType" sap:content-version="1"/>
+                <EntitySet Name="BatchClass" EntityType="cds_api_batch_srv.BatchClassType" sap:updatable="false" sap:content-version="1"/>
+                <EntitySet Name="BatchPlant" EntityType="cds_api_batch_srv.BatchPlantType" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_4B366B354633A0A31385A5EB9C273E6F" Association="cds_api_batch_srv.assoc_4B366B354633A0A31385A5EB9C273E6F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="BatchCharc" Role="FromRole_assoc_4B366B354633A0A31385A5EB9C273E6F"/>
+                    <End EntitySet="BatchCharcValue" Role="ToRole_assoc_4B366B354633A0A31385A5EB9C273E6F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_50E0FB99EF508B61011201AAEB1E15C7" Association="cds_api_batch_srv.assoc_50E0FB99EF508B61011201AAEB1E15C7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Batch" Role="FromRole_assoc_50E0FB99EF508B61011201AAEB1E15C7"/>
+                    <End EntitySet="BatchPlant" Role="ToRole_assoc_50E0FB99EF508B61011201AAEB1E15C7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_EB7E7CE59B7AFAD25AC9F6525F8CD418" Association="cds_api_batch_srv.assoc_EB7E7CE59B7AFAD25AC9F6525F8CD418" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="BatchClass" Role="FromRole_assoc_EB7E7CE59B7AFAD25AC9F6525F8CD418"/>
+                    <End EntitySet="Batch" Role="ToRole_assoc_EB7E7CE59B7AFAD25AC9F6525F8CD418"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6E213856701116CD7E1E7CC59103B8D5" Association="cds_api_batch_srv.assoc_6E213856701116CD7E1E7CC59103B8D5" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="BatchCharcValue" Role="FromRole_assoc_6E213856701116CD7E1E7CC59103B8D5"/>
+                    <End EntitySet="BatchCharc" Role="ToRole_assoc_6E213856701116CD7E1E7CC59103B8D5"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_EB4BB776AFF36BBF6F9CB98188C729EB" Association="cds_api_batch_srv.assoc_EB4BB776AFF36BBF6F9CB98188C729EB" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="BatchCharc" Role="FromRole_assoc_EB4BB776AFF36BBF6F9CB98188C729EB"/>
+                    <End EntitySet="Batch" Role="ToRole_assoc_EB4BB776AFF36BBF6F9CB98188C729EB"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_48D76C27EA225BB59F7E80B6C0B57CD2" Association="cds_api_batch_srv.assoc_48D76C27EA225BB59F7E80B6C0B57CD2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="BatchPlant" Role="FromRole_assoc_48D76C27EA225BB59F7E80B6C0B57CD2"/>
+                    <End EntitySet="Batch" Role="ToRole_assoc_48D76C27EA225BB59F7E80B6C0B57CD2"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F157C1BF1BB8332EF3EDE600265FEEC4" Association="cds_api_batch_srv.assoc_F157C1BF1BB8332EF3EDE600265FEEC4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Batch" Role="FromRole_assoc_F157C1BF1BB8332EF3EDE600265FEEC4"/>
+                    <End EntitySet="BatchClass" Role="ToRole_assoc_F157C1BF1BB8332EF3EDE600265FEEC4"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_60ABC63B5847FBB947A5E66206309374" Association="cds_api_batch_srv.assoc_60ABC63B5847FBB947A5E66206309374" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Batch" Role="FromRole_assoc_60ABC63B5847FBB947A5E66206309374"/>
+                    <End EntitySet="BatchCharc" Role="ToRole_assoc_60ABC63B5847FBB947A5E66206309374"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_api_batch_srv.cds_api_batch_srv_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_api_batch_srv.cds_api_batch_srv_Entities/Batch" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BatchClass"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BatchPlant"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_api_batch_srv.cds_api_batch_srv_Entities/BatchCharc" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_BatchCharcValue"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_api_batch_srv.cds_api_batch_srv_Entities/BatchCharcValue" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_api_batch_srv.cds_api_batch_srv_Entities/BatchClass" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_api_batch_srv.cds_api_batch_srv_Entities/BatchPlant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/sap/ZUI_O2_QM_BATCH/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/sap/ZUI_O2_QM_BATCH/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

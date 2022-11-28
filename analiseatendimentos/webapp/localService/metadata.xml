@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://lnl-s4h.opustech.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://lnl-s4h.opustech.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://lnl-s4h.opustech.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://lnl-s4h.opustech.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://lnl-s4h.opustech.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://lnl-s4h.opustech.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://lnl-s4h.opustech.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://lnl-s4h.opustech.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://lnl-s4h.opustech.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZA_FE20_ATENDIMENTO_CDS" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZA_FE20_ATENDIMENTOType" sap:semantics="aggregate" sap:label="Lista de Atendimentos" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Data" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Dt.criação" sap:quickinfo="Data de criação do registro"/>
+                <Property Name="Loja" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension"/>
+                <Property Name="Cliente" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="NonNegative"/>
+                <Property Name="Nome" Type="Edm.String" MaxLength="50" sap:aggregation-role="dimension"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension"/>
+                <Property Name="status_txt" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension"/>
+                <Property Name="Atendente" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Nome do usuário"/>
+                <Property Name="Valor" Type="Edm.Decimal" Precision="12" Scale="3" sap:aggregation-role="measure" sap:unit="Moeda" sap:label="Preço líquido" sap:filterable="false"/>
+                <Property Name="Moeda" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Moeda do documento" sap:quickinfo="Moeda do documento SD" sap:semantics="currency-code"/>
+                <NavigationProperty Name="to_Cliente" Relationship="ZA_FE20_ATENDIMENTO_CDS.assoc_B8771165A820682DD9886C5F1EEC2ED3" FromRole="FromRole_assoc_B8771165A820682DD9886C5F1EEC2ED3" ToRole="ToRole_assoc_B8771165A820682DD9886C5F1EEC2ED3"/>
+            </EntityType>
+            <EntityType Name="ZTAB_PET_CLIENTEType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="ID Cliente"/>
+                <Property Name="NOME" Type="Edm.String" MaxLength="50" sap:label="Nome"/>
+                <Property Name="SEXO" Type="Edm.String" MaxLength="1" sap:label="Sexo"/>
+                <Property Name="RUA" Type="Edm.String" MaxLength="50" sap:label="Rua e Numero"/>
+                <Property Name="CEP" Type="Edm.String" MaxLength="10" sap:label="CEP"/>
+                <Property Name="CIDADE" Type="Edm.String" MaxLength="30" sap:label="Cidade"/>
+                <Property Name="UF" Type="Edm.String" MaxLength="2" sap:label="UF"/>
+                <Property Name="NRO_PETS" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Quantidade de Pets"/>
+            </EntityType>
+            <Association Name="assoc_B8771165A820682DD9886C5F1EEC2ED3" sap:content-version="1">
+                <End Type="ZA_FE20_ATENDIMENTO_CDS.ZA_FE20_ATENDIMENTOType" Multiplicity="1" Role="FromRole_assoc_B8771165A820682DD9886C5F1EEC2ED3"/>
+                <End Type="ZA_FE20_ATENDIMENTO_CDS.ZTAB_PET_CLIENTEType" Multiplicity="0..1" Role="ToRole_assoc_B8771165A820682DD9886C5F1EEC2ED3"/>
+            </Association>
+            <EntityContainer Name="ZA_FE20_ATENDIMENTO_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZA_FE20_ATENDIMENTO" EntityType="ZA_FE20_ATENDIMENTO_CDS.ZA_FE20_ATENDIMENTOType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZTAB_PET_CLIENTE" EntityType="ZA_FE20_ATENDIMENTO_CDS.ZTAB_PET_CLIENTEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_B8771165A820682DD9886C5F1EEC2ED3" Association="ZA_FE20_ATENDIMENTO_CDS.assoc_B8771165A820682DD9886C5F1EEC2ED3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZA_FE20_ATENDIMENTO" Role="FromRole_assoc_B8771165A820682DD9886C5F1EEC2ED3"/>
+                    <End EntitySet="ZTAB_PET_CLIENTE" Role="ToRole_assoc_B8771165A820682DD9886C5F1EEC2ED3"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZA_FE20_ATENDIMENTO_CDS.ZA_FE20_ATENDIMENTO_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZA_FE20_ATENDIMENTO_CDS.ZA_FE20_ATENDIMENTO_CDS_Entities/ZA_FE20_ATENDIMENTO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>Valor</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://lnl-s4h.opustech.com.br:8000/sap/opu/odata/sap/ZA_FE20_ATENDIMENTO_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://lnl-s4h.opustech.com.br:8000/sap/opu/odata/sap/ZA_FE20_ATENDIMENTO_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

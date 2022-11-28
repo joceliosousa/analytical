@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/c_frtordexecutionstsq_cds/$metadata">
+        <edmx:Include Namespace="C_FRTORDEXECUTIONSTSQ_CDS" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="c_frtordexecutionstsq_cds_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/TranspOrdLfcycStsChgDteYrWeek">
+                <Annotation Term="Common.IsCalendarYearWeek"/>
+            </Annotations>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/TranspOrdLfcycStsChgDteYrMnth">
+                <Annotation Term="Common.IsCalendarYearMonth"/>
+            </Annotations>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/TranspOrdLfcycStsChgDteYearQtr">
+                <Annotation Term="Common.IsCalendarYearQuarter"/>
+            </Annotations>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/TranspOrdLfcycStsChgDteYear">
+                <Annotation Term="Common.IsCalendarYear"/>
+            </Annotations>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/P_DisplayTimeUnit">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/P_DisplayWeightUnit">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/P_DisplayVolumeUnit">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/P_DisplayQuantityUnit">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/P_DisplayNmbrOfCtnsUnit">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/ID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/TotaledProperties">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/NumberOfTranspOrdsInTransit"/>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/NmbrOfDelayedTranspOrdsInTrnst"/>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/TranspOrdDelayInDspUnit"/>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/NumberOfTransportationOrders"/>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/TranspOrdGrossWeightInDspUnit"/>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/TranspOrdGrossVolumeInDspUnit"/>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/TranspOrdQuantityInDisplayUnit"/>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/TranspOrdNumberOfCtnsInDspUnit"/>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/NumberOfPlngBlkdTranspOrds"/>
+            <Annotations Target="C_FRTORDEXECUTIONSTSQ_CDS.C_FRTORDEXECUTIONSTSQResult/NumberOfExecBlkdTranspOrds"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

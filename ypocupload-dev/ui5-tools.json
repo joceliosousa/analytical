@@ -1,0 +1,20 @@
+{
+  "deployer": {
+    "type": "Gateway",
+    "options": {
+      "conn": {
+        "server": "sap-s4d-ap1.santaclara.com.br",
+        "client": 100
+      },
+      "auth": {},
+      "ui5": {
+        "language": "PT",
+        "bspcontainer": "YPOC_UPLOAD",
+        "bspcontainer_text": "teste",
+        "package": "$YPOC_RAP_EXCEL",
+        "calc_appindex": true,
+        "transportno": "S4DK904470"
+      }
+    }
+  }
+}

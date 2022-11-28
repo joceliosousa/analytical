@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zui_sd_relat_devolucao" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="I_BR_NFBusinessPlace_SHType" sap:label="Ajuda de pesquisa para campo de local de negócio NF" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="Branch"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Empresa"/>
+                <Property Name="Branch" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Local de negócios"/>
+                <Property Name="BusinessPlace" Type="Edm.String" MaxLength="30" sap:label="Nome local negócio" sap:quickinfo="Nome do local de negócio"/>
+            </EntityType>
+            <EntityType Name="I_CompanyCodeVHType" sap:label="Empresa" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="CompanyCodeName" sap:label="Empresa"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Nome da firma" sap:quickinfo="Nome da firma ou empresa"/>
+                <Property Name="ControllingArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Área contab.custos" sap:quickinfo="Área de contabilidade de custos"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="25" sap:label="Local"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Chave de país/região" sap:quickinfo="Chave do país/da região"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Moeda" sap:quickinfo="Código da moeda" sap:semantics="currency-code"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Código de idioma"/>
+                <Property Name="ChartOfAccounts" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plano de contas"/>
+                <Property Name="FiscalYearVariant" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Variante exercício" sap:quickinfo="Variante de exercício"/>
+                <Property Name="Company" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Sociedade"/>
+                <Property Name="CreditControlArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Área controle créd." sap:quickinfo="Área de controle de créditos"/>
+                <Property Name="CountryChartOfAccounts" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plano de contas país" sap:quickinfo="Plano de contas do país"/>
+                <Property Name="FinancialManagementArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Área de AF" sap:quickinfo="Área de administração financeira"/>
+            </EntityType>
+            <EntityType Name="I_DistributionChannelType" sap:label="Canal de distribuição" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DistributionChannel"/>
+                </Key>
+                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="DistributionChannel_Text" sap:label="Canal distribuição" sap:quickinfo="Canal de distribuição"/>
+                <Property Name="DistributionChannel_Text" Type="Edm.String" MaxLength="20" sap:label="Descrição do canal de distribuição" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_PlantType" sap:label="Centro" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="PlantName" sap:label="Centro"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:label="Nome do centro"/>
+                <Property Name="ValuationArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Área de avaliação"/>
+                <Property Name="PlantCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Nº cliente do centro"/>
+                <Property Name="PlantSupplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Nº forn.centro" sap:quickinfo="Número do fornecedor do centro" sap:value-list="standard"/>
+                <Property Name="FactoryCalendar" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Calendário fábrica" sap:quickinfo="Chave do calendário de fábrica"/>
+                <Property Name="DefaultPurchasingOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Organização compras" sap:quickinfo="Organização de compras"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Organização vendas" sap:quickinfo="Organização de vendas para faturamento interno"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Endereço"/>
+                <Property Name="PlantCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Ctg.centro"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Canal distribuição" sap:quickinfo="Canal de distribuição para faturamento interno"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Set.ativ.fat.interno" sap:quickinfo="Setor de atividade para faturamento interno"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Código de idioma"/>
+                <Property Name="IsMarkedForArchiving" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Marc.para arquiv." sap:quickinfo="Marcaçaõ central para arquivamento para registro mestre"/>
+            </EntityType>
+            <EntityType Name="I_SDDocumentReasonType" sap:label="Motivo da ordem" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SDDocumentReason"/>
+                </Key>
+                <Property Name="SDDocumentReason" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="SDDocumentReason_Text" sap:label="Motivo da ordem" sap:quickinfo="Motivo da ordem (motivo da transação comercial)"/>
+                <Property Name="SDDocumentReason_Text" Type="Edm.String" MaxLength="40" sap:label="Denominação" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="RetroBillingUsage" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Fatmto.retroativo" sap:quickinfo="Utilização motivo da ordem para faturamento retroativo"/>
+                <Property Name="SelfBillingValueItem" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Item valor proced.NC" sap:quickinfo="Item de valor para procedimento de nota de crédito"/>
+            </EntityType>
+            <EntityType Name="I_Supplier_VHType" sap:label="Fornecedor" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="SupplierName" sap:label="Fornecedor" sap:quickinfo="Nº conta do fornecedor"/>
+                <Property Name="SupplierName" Type="Edm.String" MaxLength="35" sap:label="Nome" sap:quickinfo="Nome 1"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Autorização" sap:quickinfo="Grupo autorizações"/>
+                <Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Grupo de contas" sap:quickinfo="Grupo de contas do fornecedor"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Objetivo concluído" sap:quickinfo="Código para objetivo empresarial cumprido"/>
+            </EntityType>
+            <EntityType Name="AppDevolucaoType" sap:semantics="aggregate" sap:label="Relatório Sintético de NFs de Devolução" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BR_NotaFiscal" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="DocDev" sap:quickinfo="Nº documento"/>
+                <Property Name="CompanyCode" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:required-in-filter="true" sap:text="CompanyCodeName" sap:label="Empresa" sap:value-list="standard"/>
+                <Property Name="CompanyCodeName" Type="Edm.String" MaxLength="25" sap:label="Nome da firma" sap:quickinfo="Nome da firma ou empresa"/>
+                <Property Name="BusinessPlace" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="BusinessPlaceName" sap:label="Local de negócio" sap:value-list="standard"/>
+                <Property Name="BusinessPlaceName" Type="Edm.String" MaxLength="30" sap:label="Nome 1" sap:quickinfo="Nome"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:required-in-filter="true" sap:label="Centro" sap:value-list="standard"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Criado Por" sap:quickinfo="Usuário que criou o documento" sap:value-list="standard"/>
+                <Property Name="BR_NFDocumentType" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Tipo de Doc de Vendas Dev" sap:value-list="standard"/>
+                <Property Name="CustomerReturnType" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="CustomerDocumentTypeName" sap:label="Tipo devol.cliente" sap:quickinfo="Tipo de devolução de cliente" sap:value-list="standard"/>
+                <Property Name="CustomerDocumentTypeName" Type="Edm.String" MaxLength="20" sap:label="Descrição" sap:quickinfo="Descrição do tipo de documento de vendas"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:text="DistributionChannelName" sap:label="Canal distribuição" sap:quickinfo="Canal de distribuição" sap:value-list="standard"/>
+                <Property Name="DistributionChannelName" Type="Edm.String" MaxLength="20" sap:label="Descrição do canal de distribuição"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Setor de atividade" sap:value-list="fixed-values"/>
+                <Property Name="BR_NFPartner" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Cliente" sap:quickinfo="Identificação do parceiro (cliente, fornecedor, loc.negócio)" sap:value-list="standard"/>
+                <Property Name="BR_NFPartnerName1" Type="Edm.String" MaxLength="35" sap:aggregation-role="dimension" sap:label="Nome Cliente" sap:quickinfo="Nome 1"/>
+                <Property Name="BR_NFPartnerRegionCode" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="UF" sap:quickinfo="Região (estado federal, estado federado, província, condado)"/>
+                <Property Name="BR_NFPartnerCityName" Type="Edm.String" MaxLength="35" sap:aggregation-role="dimension" sap:label="Município" sap:quickinfo="Local"/>
+                <Property Name="BR_NFeNumber" Type="Edm.String" MaxLength="9" sap:aggregation-role="dimension" sap:label="NroNFeDev" sap:quickinfo="Número de nove dígitos"/>
+                <Property Name="BillingDocument" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Doc Faturamento de Dev" sap:quickinfo="Documento de faturamento"/>
+                <Property Name="BR_NFIssueDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Data de Emissão Dev" sap:quickinfo="Data do documento"/>
+                <Property Name="BR_NFPostingDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:required-in-filter="true" sap:label="Data de Lançamento Dev" sap:quickinfo="Data de lançamento"/>
+                <Property Name="BR_NFTotalAmount" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="Valor NFe Dev" sap:quickinfo="Montante total de nota fiscal" sap:filterable="false"/>
+                <Property Name="BR_NFNetPriceTotalAmount" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="Valor Produto Dev" sap:quickinfo="Montante produto total" sap:filterable="false"/>
+                <Property Name="HeaderGrossWeight" Type="Edm.Decimal" Precision="15" Scale="3" sap:aggregation-role="measure" sap:filterable="false"/>
+                <Property Name="BR_NFType" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Categ NF Dev" sap:quickinfo="Tipo de nota fiscal"/>
+                <Property Name="BR_ICMSBaseTotalAmount" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="BC ICMS Dev" sap:quickinfo="Base do ICMS" sap:filterable="false"/>
+                <Property Name="BR_ICMSTaxTotalAmount" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="ICMS Dev" sap:quickinfo="Montante ICMS" sap:filterable="false"/>
+                <Property Name="BR_IPIBaseTotalAmount" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="BC IPI Dev" sap:quickinfo="Montante ICMS ST" sap:filterable="false"/>
+                <Property Name="BR_IPITaxTotalAmount" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="IPI Dev" sap:quickinfo="Montante IPI" sap:filterable="false"/>
+                <Property Name="BR_ICMSSTBaseTotalAmount" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="BC ICMS ST Dev" sap:quickinfo="Montante base ICMS ST" sap:filterable="false"/>
+                <Property Name="BR_ICMSSTTaxTotalAmount" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="ICMS ST Dev" sap:quickinfo="Montante ICMS ST" sap:filterable="false"/>
+                <Property Name="BR_PISBaseTotalAmount" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="BC PIS Dev" sap:quickinfo="Montante ICMS ST" sap:filterable="false"/>
+                <Property Name="BR_PISTaxTotalAmount" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="PIS Dev" sap:quickinfo="Montante ICMS ST" sap:filterable="false"/>
+                <Property Name="BR_COFINSBaseTotalAmount" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="BC COFINS Dev" sap:quickinfo="Montante ICMS ST" sap:filterable="false"/>
+                <Property Name="BR_COFINSTaxTotalAmount" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="COFINS Dev" sap:quickinfo="Montante ICMS ST" sap:filterable="false"/>
+                <Property Name="CustomerReturn" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Documento de vendas"/>
+                <Property Name="BillingDocumentDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Data do Faturamento" sap:quickinfo="Data do faturamento"/>
+                <Property Name="BR_NFCancellationDate" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Data de cancelamento"/>
+                <Property Name="BR_NFIsCreatedManually" Type="Edm.String" MaxLength="1" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Nota Fiscal Manual" sap:quickinfo="Criado manualmente" sap:value-list="fixed-values"/>
+                <Property Name="BR_NotaFiscal_S" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="Doc Saída" sap:quickinfo="Nº documento"/>
+                <Property Name="SalesDocumentType_S" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Tipo Doc. de Venda Saida" sap:quickinfo="Tipo de documento de vendas"/>
+                <Property Name="SalesOrderTypeName_S" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="Desc Tipo de Doc Vendas Saida" sap:quickinfo="Descrição do tipo de documento de vendas"/>
+                <Property Name="BR_NFPostingDate_S" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Data de Lançamento Saida" sap:quickinfo="Data de lançamento"/>
+                <Property Name="BR_NFIssueDate_S" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Data de Emissão Saida" sap:quickinfo="Data do documento"/>
+                <Property Name="BR_NFReferenceDocument_S" Type="Edm.String" MaxLength="35" sap:aggregation-role="dimension" sap:label="Doc Faturamento de Saida"/>
+                <Property Name="BR_NFTotalAmount_S" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="Valor NFe Saída" sap:quickinfo="Montante total de nota fiscal" sap:filterable="false"/>
+                <Property Name="BR_NFNetPriceTotalAmount_S" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="Valor Produto Saída" sap:quickinfo="Montante produto total" sap:filterable="false"/>
+                <Property Name="BR_NFType_S" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Categ NF  Saída" sap:quickinfo="Tipo de nota fiscal"/>
+                <Property Name="BR_ICMSBaseTotalAmount_S" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="BC ICMS Saida" sap:quickinfo="Base do ICMS" sap:filterable="false"/>
+                <Property Name="BR_ICMSTaxTotalAmount_S" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="ICMS Saída" sap:quickinfo="Montante ICMS" sap:filterable="false"/>
+                <Property Name="BR_IPITaxTotalAmount_S" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="BC IPI Saída" sap:quickinfo="Montante IPI" sap:filterable="false"/>
+                <Property Name="BR_IPIBaseTotalAmount_S" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="BC IPI Saída" sap:quickinfo="Montante ICMS ST" sap:filterable="false"/>
+                <Property Name="BR_ICMSSTBaseTotalAmount_S" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="IPI Saída" sap:quickinfo="Montante base ICMS ST" sap:filterable="false"/>
+                <Property Name="BR_ICMSSTTaxTotalAmount_S" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="ICMS ST Saída" sap:quickinfo="Montante ICMS ST" sap:filterable="false"/>
+                <Property Name="BR_PISBaseTotalAmount_S" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="BC PIS Saída" sap:quickinfo="Montante ICMS ST" sap:filterable="false"/>
+                <Property Name="BR_PISTaxTotalAmount_S" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="PIS Saída" sap:quickinfo="Montante ICMS ST" sap:filterable="false"/>
+                <Property Name="BR_COFINSBaseTotalAmount_S" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="BC COFINS Saída" sap:quickinfo="Montante ICMS ST" sap:filterable="false"/>
+                <Property Name="BR_COFINSTaxTotalAmount_S" Type="Edm.Decimal" Precision="15" Scale="2" sap:aggregation-role="measure" sap:label="COFINS Saída" sap:quickinfo="Montante ICMS ST" sap:filterable="false"/>
+                <Property Name="SDDocumentReason" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Motivo da ordem" sap:quickinfo="Motivo da ordem (motivo da transação comercial)" sap:value-list="standard"/>
+                <Property Name="SDDocumentReasonText_S" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Descrição do Motivo" sap:quickinfo="Denominação"/>
+                <Property Name="AreaResponsavel_S" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="Área Responsável-Dev" sap:quickinfo="Área responsável"/>
+                <Property Name="Impacto" Type="Edm.Boolean" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Impacto Indicador" sap:quickinfo="Impacto"/>
+                <Property Name="Embarque" Type="Edm.Boolean" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Com Embarque" sap:quickinfo="Embarque"/>
+                <Property Name="Qualidade" Type="Edm.Boolean" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Indicador Avarias" sap:quickinfo="Qualidade"/>
+                <Property Name="Vendedor_S" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Cód Vendedor" sap:quickinfo="Nº conta do fornecedor" sap:value-list="standard"/>
+                <Property Name="NomeVendedor_S" Type="Edm.String" MaxLength="220" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Nome Vendedor" sap:quickinfo="Nome completo do fornecedor"/>
+                <Property Name="BPIdentificationNumber_S" Type="Edm.String" MaxLength="60" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Matrícula" sap:quickinfo="Nº de identificação"/>
+                <Property Name="Motorista_S" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Cód Motorista" sap:quickinfo="Recurso"/>
+                <Property Name="NomeMotorista_S" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Nome do Motorista" sap:quickinfo="Descrição do item"/>
+                <Property Name="MatriculaMotorista_S" Type="Edm.String" MaxLength="60" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Matrícula do Motorista" sap:quickinfo="Nº de identificação" sap:value-list="standard"/>
+                <Property Name="OrdemFrete_S" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Ordem de Frete"/>
+                <Property Name="Route_S" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Itinerário"/>
+                <Property Name="SalesDistrict_S" Type="Edm.String" MaxLength="6" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Cod região de Vendas" sap:quickinfo="Região de vendas"/>
+                <Property Name="SalesDistrictName_S" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="Desc. Região de Vendas" sap:quickinfo="Denominação da zona de distribuição"/>
+                <Property Name="SalesOffice_S" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Escritório de Vendas" sap:quickinfo="Escritório de vendas"/>
+                <Property Name="SalesOrganization_S" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Organização vendas" sap:quickinfo="Organização de vendas" sap:value-list="standard"/>
+            </EntityType>
+            <EntityType Name="ZI_BP_IDENTIFICATIONType" sap:label="View para buscar identificação" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BusinessPartner"/>
+                    <PropertyRef Name="BPIdentificationNumber"/>
+                </Key>
+                <Property Name="BusinessPartner" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Parceiro de negócios" sap:quickinfo="Nº parceiro de negócios"/>
+                <Property Name="BPIdentificationNumber" Type="Edm.String" Nullable="false" MaxLength="60" sap:display-format="UpperCase" sap:label="Nº de identificação"/>
+            </EntityType>
+            <EntityType Name="ZI_CA_SETOR_ATIV_LISTType" sap:label="Help Search - Setor de Atividade" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Division"/>
+                </Key>
+                <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="Division_Text" sap:label="Setor de atividade"/>
+                <Property Name="Division_Text" Type="Edm.String" MaxLength="20" sap:label="Descrição do setor de atividade" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="ZI_CA_TP_DOC_NFType" sap:label="Help Search - Tipo NF" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BR_NFIsCreatedManually"/>
+                </Key>
+                <Property Name="BR_NFIsCreatedManually" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:text="BR_NFIsCreatedManuallyDesc" sap:label="Criado manualmente"/>
+                <Property Name="BR_NFIsCreatedManuallyDesc" Type="Edm.String" MaxLength="60" sap:label="Descrição criada manualmente"/>
+            </EntityType>
+            <EntityType Name="ZI_CA_VH_AUARTType" sap:label="Search Help: Tipo de documento de vendas" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesDocumentType"/>
+                </Key>
+                <Property Name="SalesDocumentType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="SalesDocumentTypeName" sap:label="Tipo doc.vendas" sap:quickinfo="Tipo de documento de vendas"/>
+                <Property Name="SalesDocumentTypeName" Type="Edm.String" MaxLength="20" sap:label="Descrição" sap:quickinfo="Descrição do tipo de documento de vendas"/>
+            </EntityType>
+            <EntityType Name="ZI_CA_VH_CUSTOMER_CNPJType" sap:label="Help Search: Cliente" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Cliente" sap:quickinfo="Nº cliente"/>
+                <Property Name="Cnpj" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="CNPJ do Cliente" sap:quickinfo="Nº ID fiscal 1"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Nome do cliente"/>
+            </EntityType>
+            <EntityType Name="ZI_CA_VH_DOCTYP_NFType" sap:label="Help Search - Tipos de Documento da NF" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BR_NFDocumentType"/>
+                </Key>
+                <Property Name="BR_NFDocumentType" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:text="Text" sap:label="Tipo de documento"/>
+                <Property Name="Text" Type="Edm.String" MaxLength="60" sap:label="Descrição" sap:quickinfo="Descrição da regra"/>
+            </EntityType>
+            <EntityType Name="ZI_CA_VH_SALESORGType" sap:label="Help Search: Organização de vendas" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrgID"/>
+                </Key>
+                <Property Name="SalesOrgID" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="Text" sap:label="Organização vendas" sap:quickinfo="Organização de vendas"/>
+                <Property Name="Text" Type="Edm.String" MaxLength="20" sap:label="Denominação"/>
+            </EntityType>
+            <EntityType Name="ZI_CA_VH_USERType" sap:label="Help Search: Usuário" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bname"/>
+                </Key>
+                <Property Name="Bname" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:text="Text" sap:label="Usuário" sap:quickinfo="Nome do usuário no mestre de usuários"/>
+                <Property Name="Text" Type="Edm.String" MaxLength="80" sap:label="Nome completo" sap:quickinfo="Nome completo da pessoa"/>
+            </EntityType>
+            <EntityContainer Name="cds_zui_sd_relat_devolucao_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_BR_NFBusinessPlace_SH" EntityType="cds_zui_sd_relat_devolucao.I_BR_NFBusinessPlace_SHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_CompanyCodeVH" EntityType="cds_zui_sd_relat_devolucao.I_CompanyCodeVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_DistributionChannel" EntityType="cds_zui_sd_relat_devolucao.I_DistributionChannelType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Plant" EntityType="cds_zui_sd_relat_devolucao.I_PlantType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_SDDocumentReason" EntityType="cds_zui_sd_relat_devolucao.I_SDDocumentReasonType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Supplier_VH" EntityType="cds_zui_sd_relat_devolucao.I_Supplier_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="AppDevolucao" EntityType="cds_zui_sd_relat_devolucao.AppDevolucaoType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_BP_IDENTIFICATION" EntityType="cds_zui_sd_relat_devolucao.ZI_BP_IDENTIFICATIONType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_CA_SETOR_ATIV_LIST" EntityType="cds_zui_sd_relat_devolucao.ZI_CA_SETOR_ATIV_LISTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_CA_TP_DOC_NF" EntityType="cds_zui_sd_relat_devolucao.ZI_CA_TP_DOC_NFType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_CA_VH_AUART" EntityType="cds_zui_sd_relat_devolucao.ZI_CA_VH_AUARTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_CA_VH_CUSTOMER_CNPJ" EntityType="cds_zui_sd_relat_devolucao.ZI_CA_VH_CUSTOMER_CNPJType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_CA_VH_DOCTYP_NF" EntityType="cds_zui_sd_relat_devolucao.ZI_CA_VH_DOCTYP_NFType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_CA_VH_SALESORG" EntityType="cds_zui_sd_relat_devolucao.ZI_CA_VH_SALESORGType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_CA_VH_USER" EntityType="cds_zui_sd_relat_devolucao.ZI_CA_VH_USERType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="cds_zui_sd_relat_devolucao.I_PlantType/PlantSupplier" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Nº forn.centro"/>
+                        <PropertyValue Property="CollectionPath" String="I_Supplier_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PlantSupplier"/>
+                                    <PropertyValue Property="ValueListProperty" String="Supplier"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SupplierName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/CompanyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="I_CompanyCodeVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCodeName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ControllingArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Currency"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FiscalYearVariant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Company"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CreditControlArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CountryChartOfAccounts"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FinancialManagementArea"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BusinessPlace" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="I_BR_NFBusinessPlace_SH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CompanyCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CompanyCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="BusinessPlace"/>
+                                    <PropertyValue Property="ValueListProperty" String="Branch"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPlace"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/Plant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="I_Plant"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Plant"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ValuationArea"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantCustomer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantSupplier"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FactoryCalendar"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DefaultPurchasingOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrganization"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AddressID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantCategory"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DistributionChannel"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Division"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Language"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IsMarkedForArchiving"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/CreatedByUser" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Criado Por"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CA_VH_USER"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CreatedByUser"/>
+                                    <PropertyValue Property="ValueListProperty" String="Bname"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_NFDocumentType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Tipo de Doc de Vendas Dev"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CA_VH_DOCTYP_NF"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="BR_NFDocumentType"/>
+                                    <PropertyValue Property="ValueListProperty" String="BR_NFDocumentType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/CustomerReturnType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CA_VH_AUART"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerReturnType"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesDocumentType"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SalesDocumentTypeName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/DistributionChannel" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="I_DistributionChannel"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DistributionChannel"/>
+                                    <PropertyValue Property="ValueListProperty" String="DistributionChannel"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DistributionChannel_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/Division" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Setor de atividade"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CA_SETOR_ATIV_LIST"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Division"/>
+                                    <PropertyValue Property="ValueListProperty" String="Division"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Division_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_NFPartner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Cliente"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CA_VH_CUSTOMER_CNPJ"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="BR_NFPartner"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Cnpj"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_NFIsCreatedManually" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Nota Fiscal Manual"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CA_TP_DOC_NF"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="BR_NFIsCreatedManually"/>
+                                    <PropertyValue Property="ValueListProperty" String="BR_NFIsCreatedManually"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BR_NFIsCreatedManuallyDesc"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/SDDocumentReason" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="I_SDDocumentReason"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SDDocumentReason"/>
+                                    <PropertyValue Property="ValueListProperty" String="SDDocumentReason"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SDDocumentReason_Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="RetroBillingUsage"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SelfBillingValueItem"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/Vendedor_S" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Cód Vendedor"/>
+                        <PropertyValue Property="CollectionPath" String="I_Supplier_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Vendedor_S"/>
+                                    <PropertyValue Property="ValueListProperty" String="Supplier"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SupplierName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/MatriculaMotorista_S" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Matrícula do Motorista"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_BP_IDENTIFICATION"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MatriculaMotorista_S"/>
+                                    <PropertyValue Property="ValueListProperty" String="BPIdentificationNumber"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartner"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/SalesOrganization_S" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_CA_VH_SALESORG"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization_S"/>
+                                    <PropertyValue Property="ValueListProperty" String="SalesOrgID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.cds_zui_sd_relat_devolucao_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.cds_zui_sd_relat_devolucao_Entities/AppDevolucao" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="RequiresFilter" Bool="true"/>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>BR_NFTotalAmount</PropertyPath>
+                                <PropertyPath>BR_NFNetPriceTotalAmount</PropertyPath>
+                                <PropertyPath>HeaderGrossWeight</PropertyPath>
+                                <PropertyPath>BR_ICMSBaseTotalAmount</PropertyPath>
+                                <PropertyPath>BR_ICMSTaxTotalAmount</PropertyPath>
+                                <PropertyPath>BR_IPIBaseTotalAmount</PropertyPath>
+                                <PropertyPath>BR_IPITaxTotalAmount</PropertyPath>
+                                <PropertyPath>BR_ICMSSTBaseTotalAmount</PropertyPath>
+                                <PropertyPath>BR_ICMSSTTaxTotalAmount</PropertyPath>
+                                <PropertyPath>BR_PISBaseTotalAmount</PropertyPath>
+                                <PropertyPath>BR_PISTaxTotalAmount</PropertyPath>
+                                <PropertyPath>BR_COFINSBaseTotalAmount</PropertyPath>
+                                <PropertyPath>BR_COFINSTaxTotalAmount</PropertyPath>
+                                <PropertyPath>BR_NFTotalAmount_S</PropertyPath>
+                                <PropertyPath>BR_NFNetPriceTotalAmount_S</PropertyPath>
+                                <PropertyPath>BR_ICMSBaseTotalAmount_S</PropertyPath>
+                                <PropertyPath>BR_ICMSTaxTotalAmount_S</PropertyPath>
+                                <PropertyPath>BR_IPITaxTotalAmount_S</PropertyPath>
+                                <PropertyPath>BR_IPIBaseTotalAmount_S</PropertyPath>
+                                <PropertyPath>BR_ICMSSTBaseTotalAmount_S</PropertyPath>
+                                <PropertyPath>BR_ICMSSTTaxTotalAmount_S</PropertyPath>
+                                <PropertyPath>BR_PISBaseTotalAmount_S</PropertyPath>
+                                <PropertyPath>BR_PISTaxTotalAmount_S</PropertyPath>
+                                <PropertyPath>BR_COFINSBaseTotalAmount_S</PropertyPath>
+                                <PropertyPath>BR_COFINSTaxTotalAmount_S</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>CompanyCode</PropertyPath>
+                                <PropertyPath>Plant</PropertyPath>
+                                <PropertyPath>BR_NFPostingDate</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_NotaFiscal" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticObject" String="NotaFiscal"/>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_NotaFiscal_S" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticObject" String="NotaFiscal"/>
+            </Annotations>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_NFTotalAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_NFNetPriceTotalAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/HeaderGrossWeight" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_ICMSBaseTotalAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_ICMSTaxTotalAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_IPIBaseTotalAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_IPITaxTotalAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_ICMSSTBaseTotalAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_ICMSSTTaxTotalAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_PISBaseTotalAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_PISTaxTotalAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_COFINSBaseTotalAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_COFINSTaxTotalAmount" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_NFTotalAmount_S" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_NFNetPriceTotalAmount_S" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_ICMSBaseTotalAmount_S" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_ICMSTaxTotalAmount_S" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_IPITaxTotalAmount_S" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_IPIBaseTotalAmount_S" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_ICMSSTBaseTotalAmount_S" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_ICMSSTTaxTotalAmount_S" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_PISBaseTotalAmount_S" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_PISTaxTotalAmount_S" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_COFINSBaseTotalAmount_S" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zui_sd_relat_devolucao.AppDevolucaoType/BR_COFINSTaxTotalAmount_S" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/sap/ZUI_O2_SD_RELAT_DEVOLUCAO/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://sap-s4d-ap1.santaclara.com.br:8000/sap/opu/odata/sap/ZUI_O2_SD_RELAT_DEVOLUCAO/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

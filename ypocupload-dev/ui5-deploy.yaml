@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.5"
+metadata:
+  name: br.com.trescoracoes.poc.upload.ypocupload
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: S4D_100
+          url: http://s4d.3c.com.br:3000
+        app:
+          name: YPOC_UPLOAD
+          description: Upload de arquivo do Excel
+          package: $YPOC_RAP_EXCEL
+          transport: "S4DK904470"
